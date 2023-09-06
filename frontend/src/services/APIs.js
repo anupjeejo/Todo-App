@@ -13,14 +13,16 @@ export const getTodo = async (setToDoList) => {
     })
 }
 
-export const createTodo = async (name, description, setToDoList) => {
+export const createTodo = async (name, description, setToDoList, setName, setDescription) => {
       axios
       .post( baseUrl + '/addTodo', {
           toDoName: name,
           toDoDescription: description
       })
-      .then((respones)=>{
+      .then(()=>{
         getTodo(setToDoList)
+        setName("")
+        setDescription("")
       })
       .catch((error) => {
         console.log("error msg:", error);

@@ -9,26 +9,26 @@ function App() {
   const [description, setDescription] = useState("")
   const [toDoList, setToDoList] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (name, description) => {
       if(name === "" || description === "")
       {
         toast.error("Name and description is required")
-        e.preventDefault()
       }
       else
       {
-        createTodo(name, description, setToDoList);
-        setName("")
-        setDescription("")
+        createTodo(name, description, setToDoList, setName, setDescription);
+        toast.success("Todo created successfully")
       }
   }
 
   const handleDelete = (toDoId) => {
     deleteTodo(toDoId, setToDoList)
+    toast.success("Todo deleted successfully")
   }
 
   const handleComplete = (toDoId) => {
     activeToDo(toDoId, setToDoList)
+    toast.success("Todo task completed successfully")
   }
   useEffect( () => {
       getTodo(setToDoList)
@@ -43,7 +43,6 @@ function App() {
               <div className='text-white text-center text-6xl'>My Todos</div>
             
               {/* Section-2 */}
-              <form onSubmit={handleSubmit}>
                 <div className='flex justify-between items-center bg-gray-500 px-2 py-4'>
                   <div className='flex gap-5'>
                     <div className=''>
@@ -52,6 +51,7 @@ function App() {
                         <input className='rounded-2xl px-2 py-2 border-amber-600 border-[2px]'
                           type="text"
                           placeholder="Name..."
+                          value={name}
                           onChange={(e) => {setName(e.target.value)}}
                         >
                         </input>
@@ -63,16 +63,16 @@ function App() {
                         <input className='rounded-2xl px-2 py-2 border-amber-600 border-[2px]'
                           type="text"
                           placeholder="Description..."
+                          value={description}
                           onChange={(e) => {setDescription(e.target.value)}}
                         ></input>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <button className='text-white bg-amber-600 rounded-3xl px-4 py-2' type="submit">Add ToDo</button>
+                    <button className='text-white bg-amber-600 rounded-3xl px-4 py-2' onClick={() => handleSubmit(name, description)}>Add ToDo</button>
                   </div>
                 </div>
-              </form>
             </div>
 
             {/* Section-3 */}
