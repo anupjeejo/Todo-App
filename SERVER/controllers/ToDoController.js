@@ -3,7 +3,6 @@ const toDoModel = require("../models/ToDoModel")
 module.exports.getToDo = async (req, res) =>{
     try {
         const toDo = await toDoModel.find();
-        console.log(toDo)
         
         res.status(200).json({
             success: true,
