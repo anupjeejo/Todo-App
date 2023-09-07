@@ -3,7 +3,6 @@ const toDoModel = require("../models/ToDoModel")
 module.exports.getToDo = async (req, res) =>{
     try {
         const toDo = await toDoModel.find();
-        
         res.status(200).json({
             success: true,
             message: `Todo List retrived successfully`,
@@ -30,15 +29,18 @@ module.exports.addToDo = async (req, res) =>{
               })
         }
 
-        const toDoItem = toDoModel.create({
+        await toDoModel.create({
             toDoName: toDoName,
             toDoDescription: toDoDescription,
             active: true,
         })
 
+        const toDo = await toDoModel.find();
+
         res.status(200).json({
             success: true,
             message: `Todo List added successfully`,
+            data: toDo,
           })
     } catch (error) {
         return res.status(400).json({
@@ -60,9 +62,12 @@ module.exports.deleteToDo = async (req, res) =>{
               })
         }
         await toDoModel.findByIdAndDelete(toDoId)
+
+        const toDo = await toDoModel.find();
         res.status(200).json({
             success: true,
             message: `Todo List item deleted successfully`,
+            data: toDo,
           })
     } catch (error) {
         return res.status(400).json({
@@ -91,9 +96,13 @@ module.exports.activeToDo = async (req, res) =>{
                 active: false
             }
         )
+
+        const toDo = await toDoModel.find();
+
         res.status(200).json({
             success: true,
             message: `Todo List item inactivated successfully`,
+            data: toDo
           })
     } catch (error) {
         return res.status(400).json({
