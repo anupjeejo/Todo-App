@@ -13,7 +13,9 @@ export const getTodo = async (setToDoList) => {
     })
 }
 
-export const createTodo = async (name, description, setToDoList, setName, setDescription) => {
+
+{/*
+ export const createTodo = async (name, description, setToDoList, setName, setDescription) => {
       axios
       .post( baseUrl + '/addTodo', {
           toDoName: name,
@@ -27,7 +29,7 @@ export const createTodo = async (name, description, setToDoList, setName, setDes
       .catch((error) => {
         console.log("error msg:", error);
       })
-}
+}*/}
 
 export const deleteTodo = async (toDoId, setToDoList) => {
     axios
