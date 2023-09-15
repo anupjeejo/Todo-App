@@ -19,8 +19,8 @@ function App() {
               <AddToDo/>
             </div>
 
-            {/* Section-3 Component */}
-            <ToDoList />
+            {/* Section-3 */}
+            <ToDoList/>
         </div>
     </>
   );

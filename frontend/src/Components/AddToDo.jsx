@@ -57,7 +57,8 @@ function AddToDo() {
             </div>
 
             <div>
-              <button className='text-white bg-amber-600 rounded-3xl px-4 py-2' onClick={() => handleSubmit(name, description)}>Add ToDo</button>
+              <button className='text-white bg-amber-600 rounded-3xl px-4 py-2' 
+                      onClick={() => handleSubmit(name, description)}>Add ToDo</button>
             </div>
         </div>
   )
