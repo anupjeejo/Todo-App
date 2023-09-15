@@ -9,7 +9,7 @@ import { store } from './redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <div className='flex min-h-screen w-screen bg-gray-700 place-content-center items-center overflow-x-hidden'>
+    <div className='flex h-screen bg-gray-700 place-content-center items-center'>
       <Provider store={store}>
         <App />
         <Toaster />
@@ -17,7 +17,4 @@ root.render(
     </div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
